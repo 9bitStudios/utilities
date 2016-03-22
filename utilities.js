@@ -157,7 +157,23 @@ var Utilities = {
                 monthLength[1] = 29;
 
             return day > 0 && day <= monthLength[month - 1];            
-        }
+        },
+        validateURL: function(url){
+            var re = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/gi;
+            return re.test(url);
+        },
+        validateCommaSeparatedURLs: function(urls) {
+            var re = /^((https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?)(\s*,\s*((https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?))*$/gi;
+            return re.test(urls)    
+        }, 
+        validateSlug: function(slug){
+            var re = /^[a-z0-9-]+$/;
+            return re.test(slug);
+        },
+        validateIP: function(ip){
+            var re = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+            return re.test(ip);
+        }        
     },
     Miscellaneous: {
         generateRandomString: function(strLength){
